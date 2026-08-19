@@ -6,24 +6,22 @@
  * Tutorial page: https://arduinogetstarted.com/tutorials/arduino-lm35-temperature-sensor
  */
 
-// #define ADC_VREF_mV    5000.0 // in millivolt
-// #define ADC_RESOLUTION 1024.0
-// #define PIN_LM35       A0
-const int kPinButton1 = 2;
-const int kPinLed = 9;
 
-void setup(){
-  pinMode(kPinButton1, INPUT);
-  digitalWrite(kPinButton1, HIGH);
-  pinMode(kPinLed, OUTPUT);
+
+int sensorPin = A0;
+int ledPin = 13;
+int sensorValue = 0;
+
+void setup() {
+    pinMode(ledPin, OUTPUT);
 }
 
-void loop(){
+void loop() {
+    sensorValue = analogRead(sensorPin);
 
-  if(digitalRead(kPinButton1) == LOW){
-    digitalWrite(kPinLed, HIGH);
-  }
-  else{
-    digitalWrite(kPinLed, LOW);
-  }
+    digitalWrite(ledPin, HIGH);
+    delay(sensorValue);
+
+    digitalWrite(ledPin, LOW);
+    delay(sensorValue);
 }
