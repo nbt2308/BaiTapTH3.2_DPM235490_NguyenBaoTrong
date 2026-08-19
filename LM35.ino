@@ -9,21 +9,21 @@
 // #define ADC_VREF_mV    5000.0 // in millivolt
 // #define ADC_RESOLUTION 1024.0
 // #define PIN_LM35       A0
+const int kPinButton1 = 2;
+const int kPinLed = 9;
 
-int sensorPin = A0;
-int ledPin = 13;
-int sensorValue = 0;
-
-void setup() {
-    pinMode(ledPin, OUTPUT);
+void setup(){
+  pinMode(kPinButton1, INPUT);
+  digitalWrite(kPinButton1, HIGH);
+  pinMode(kPinLed, OUTPUT);
 }
 
-void loop() {
-    sensorValue = analogRead(sensorPin);
+void loop(){
 
-    digitalWrite(ledPin, HIGH);
-    delay(sensorValue);
-
-    digitalWrite(ledPin, LOW);
-    delay(sensorValue);
+  if(digitalRead(kPinButton1) == LOW){
+    digitalWrite(kPinLed, HIGH);
+  }
+  else{
+    digitalWrite(kPinLed, LOW);
+  }
 }
